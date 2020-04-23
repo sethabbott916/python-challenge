@@ -2,14 +2,15 @@ import os
 import csv
 totalmonths = 0
 totalprofits = 0
-currentprofit = 0
+currentprofit = 867884
 totalchange = 0
 change = 0
 averagechange = 0
-increase = 0
+increase = "0"
 increasedate = "blank"
-decrease = 0
+decrease = "0"
 decreasedate = "blank"
+
 
 
 budgetpath = os.path.join("Resources", "budget_data.csv")
@@ -38,11 +39,11 @@ with open (budgetpath) as bankfile:
         change = profits - currentprofit
         currentprofit = profits
 
-        if change > increase:
+        if float(increase) > change:
             increase = change
             increasedate = date
 
-        if change < decrease:
+        if float(decrease) < change:
             decrease = change
             decreasedate = date
 
@@ -50,15 +51,20 @@ with open (budgetpath) as bankfile:
         totalchange = totalchange + change
         
         
-    
+    averagechange = totalchange / totalmonths
+    Greatcurrency = "${:,.2f}".format(increase)
+    Lowcurrency = "${:,.2f}".format(decrease)
+    Totalcurrency = "${:,.2f}".format(totalprofits)
+    Averagecurrency = "${:,.2f}".format(averagechange)
 
 averagechange = totalchange / totalmonths
 print("Financial Analysis")
 print("------------------")
 print(f"Total Months: {totalmonths}")
-print(f"Total Profits/Losses: {totalprofits}")
-print(f"Average Change: {averagechange}")
-print(f"Greatest Increase in Profits: {increasedate} {increase}")
-print(f"Greatest Decrease in Profits: {decreasedate} {decrease}")
+print(f"Total Profits/Losses: ({Totalcurrency})")
+print(f"Average Change: ({Averagecurrency})")
+print(f"Greatest Decrease in Profits: {decreasedate} ({Lowcurrency})")
+print(f"Greatest Increase in Profits: {increasedate} ({Greatcurrency})")
+
 
 
