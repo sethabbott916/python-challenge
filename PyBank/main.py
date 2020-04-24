@@ -34,10 +34,8 @@ with open (budgetpath) as bankfile:
         date = str(row[0])
         totalprofits = totalprofits + profits
 
-        
-
         change = profits - currentprofit
-        currentprofit = profits
+        
 
         if float(increase) > change:
             increase = change
@@ -49,22 +47,30 @@ with open (budgetpath) as bankfile:
 
 
         totalchange = totalchange + change
+        currentprofit = profits
         
         
-    averagechange = totalchange / totalmonths
+    averagechange = totalchange / (totalmonths - 1)
     Greatcurrency = "${:,.2f}".format(increase)
     Lowcurrency = "${:,.2f}".format(decrease)
     Totalcurrency = "${:,.2f}".format(totalprofits)
     Averagecurrency = "${:,.2f}".format(averagechange)
 
-averagechange = totalchange / totalmonths
+
 print("Financial Analysis")
 print("------------------")
 print(f"Total Months: {totalmonths}")
 print(f"Total Profits/Losses: ({Totalcurrency})")
 print(f"Average Change: ({Averagecurrency})")
-print(f"Greatest Decrease in Profits: {decreasedate} ({Lowcurrency})")
-print(f"Greatest Increase in Profits: {increasedate} ({Greatcurrency})")
+print(f"Greatest Increase in Profits: {decreasedate} ({Lowcurrency})")
+print(f"Greatest Decrease in Profits: {increasedate} ({Greatcurrency})")
 
-
-
+output_path = os.path.join("Analysis", "Results.txt")
+with open(output_path, "a") as f:
+    print("Financial Analysis", file=f)
+    print("------------------", file=f)
+    print(f"Total Months: {totalmonths}", file=f)
+    print(f"Total Profits/Losses: ({Totalcurrency})", file=f)
+    print(f"Average Change: ({Averagecurrency})", file=f)
+    print(f"Greatest Increase in Profits: {decreasedate} ({Lowcurrency})", file=f)
+    print(f"Greatest Decrease in Profits: {increasedate} ({Greatcurrency})", file=f)
