@@ -2,8 +2,8 @@ import os
 import csv
 totalmonths = 0
 totalprofits = 0
-currentprofit = 867884
 totalchange = 0
+currentprofit = 867884
 change = 0
 averagechange = 0
 increase = "0"
@@ -26,6 +26,9 @@ with open (budgetpath) as bankfile:
 
     
     header = next(datareader)
+
+ 
+
 
     for row in datareader:
     
