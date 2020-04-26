@@ -3,7 +3,7 @@ import csv
 totalmonths = 0
 totalprofits = 0
 totalchange = 0
-currentprofit = 867884
+currentprofit = 0
 change = 0
 averagechange = 0
 increase = "0"
@@ -11,9 +11,8 @@ increasedate = "blank"
 decrease = "0"
 decreasedate = "blank"
 
-#Talked to instructor in class about this problem. Tried his solution and it broke my code
-#I'm turning it in with the broken part of the code as pseudocode
-#FirstLoop = True
+
+FirstLoop = True
 
 
 budgetpath = os.path.join("Resources", "budget_data.csv")
@@ -35,9 +34,9 @@ with open (budgetpath) as bankfile:
 
     for row in datareader:
 
-        #if FirstLoop is True:
-           #currentprofit = int(row[1])
-            #FirstLoop is False
+        if FirstLoop is True:
+            currentprofit = int(row[1])
+            FirstLoop = False
             
         totalmonths = totalmonths + 1
         profits = int(row[1])
