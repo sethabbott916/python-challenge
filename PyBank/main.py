@@ -11,6 +11,9 @@ increasedate = "blank"
 decrease = "0"
 decreasedate = "blank"
 
+#Talked to instructor in class about this problem. Tried his solution and it broke my code
+#I'm turning it in with the broken part of the code as pseudocode
+#FirstLoop = True
 
 
 budgetpath = os.path.join("Resources", "budget_data.csv")
@@ -31,12 +34,15 @@ with open (budgetpath) as bankfile:
 
 
     for row in datareader:
-    
+
+        #if FirstLoop is True:
+           #currentprofit = int(row[1])
+            #FirstLoop is False
+            
         totalmonths = totalmonths + 1
         profits = int(row[1])
         date = str(row[0])
         totalprofits = totalprofits + profits
-
         change = profits - currentprofit
         
 
@@ -54,8 +60,8 @@ with open (budgetpath) as bankfile:
         
         
     averagechange = totalchange / (totalmonths - 1)
-    Greatcurrency = "${:,.2f}".format(increase)
-    Lowcurrency = "${:,.2f}".format(decrease)
+    Greatcurrency = "${:,.2f}".format(float(increase))
+    Lowcurrency = "${:,.2f}".format(float(decrease))
     Totalcurrency = "${:,.2f}".format(totalprofits)
     Averagecurrency = "${:,.2f}".format(averagechange)
 
