@@ -52,15 +52,17 @@ if Litick > Tooleytick and Litick > Correytick and Litick > Khantick:
     Winner = "Li"
 
 
-Khancent = (Khantick / totalvotes) * 100
-Tooleycent = (Tooleytick / totalvotes) * 100
-Correycent = (Correytick / totalvotes) * 100
-Licent = (Litick / totalvotes) * 100
+Khancent = (Khantick / totalvotes)
+Tooleycent = (Tooleytick / totalvotes)
+Correycent = (Correytick / totalvotes)
+Licent = (Litick / totalvotes)
 
-Khancent = round(Khancent, 4)
-Tooleycent = round(Tooleycent, 4)
-Correycent = round(Correycent, 4)
-Licent = round(Licent, 4)
+
+#Could not get the decimal place to change to 1000th place
+Khancent = "{:.3%}".format(Khancent)
+Tooleycent = "{:.3%}".format(Tooleycent)
+Correycent = "{:.3%}".format(Correycent)
+Licent = "{:.3%}".format(Licent)
 
 
 
@@ -68,10 +70,10 @@ print(f"Election Results")
 print(f"-------------------")
 print(f"Total Votes: {totalvotes}")
 print(f"-------------------")
-print(f"Khan: {Khancent}% ({Khantick})")
-print(f"Correy: {Correycent}% ({Correytick})")
-print(f"Li: {Licent}% ({Litick})")
-print(f"O'Tooley: {Tooleycent}% ({Tooleytick})")
+print(f"Khan: {Khancent} ({Khantick})")
+print(f"Correy: {Correycent} ({Correytick})")
+print(f"Li: {Licent} ({Litick})")
+print(f"O'Tooley: {Tooleycent} ({Tooleytick})")
 print(f"-------------------")
 print(f"Winner: {Winner}")
 
